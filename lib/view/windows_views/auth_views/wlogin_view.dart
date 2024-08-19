@@ -17,6 +17,7 @@ class WloginView extends StatelessWidget {
     final passwordController = TextEditingController();
     AuthController controller = Get.put(AuthController());
 
+
     return Scaffold(
       backgroundColor: kOrange,
       body: Center(

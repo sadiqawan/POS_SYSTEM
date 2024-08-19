@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pos/const/cont_colors.dart';
@@ -52,7 +52,7 @@ class AuthController extends GetxController {
           final username = user.username.isNotEmpty ? user.username : 'User';
           Get.snackbar('Success', 'Login successful! Welcome, $username!',
               backgroundColor: Colors.green.withOpacity(.3));
-          Get.offAll(HomeView());
+          Get.offAll(const HomeView());
         } else {
           Get.snackbar('Failed', 'Invalid email or password!',
               backgroundColor: kRed.withOpacity(.3));
