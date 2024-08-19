@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:pos/componants/custom_circular_button.dart';
 import 'package:pos/componants/custtom_text_feild.dart';
 import 'package:pos/const/text_style.dart';
-
+import 'package:pos/controller/auth_controller/auth_controller.dart';
 import '../../../const/exe.dart';
 
 class SignupView extends StatefulWidget {
@@ -15,7 +15,18 @@ class SignupView extends StatefulWidget {
 }
 
 class _SignupViewState extends State<SignupView> {
-  TextEditingController controller = TextEditingController();
+  final usernameController = TextEditingController();
+  final userEmailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  AuthController controller = Get.put(AuthController());
+  @override
+  void dispose() {
+  userEmailController.dispose();
+  usernameController.dispose();
+  passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,23 +43,22 @@ class _SignupViewState extends State<SignupView> {
                 style: kHeading1B,
               ),
 
-
               Image.asset('assets/images/icon_logo2.png',height: 270.h,),
               CustomTextFeild(
                 hint: 'Name',
-                controller: controller,
+                controller: usernameController,
                 icon: Icons.person_outline,
               ),
               10.height,
               CustomTextFeild(
                 hint: 'Email',
-                controller: controller,
+                controller: userEmailController,
                 icon: Icons.email_sharp,
               ),
               10.height,
               CustomTextFeild(
                 hint: 'Password',
-                controller: controller,
+                controller: passwordController,
                 icon: Icons.lock,
               ),
 
@@ -64,6 +74,7 @@ class _SignupViewState extends State<SignupView> {
                   CustomCircularButton(
                     icon: Icons.arrow_forward,
                     onTap: () {
+                      controller.register(usernameController.text.trim(),userEmailController.text.trim() , passwordController.text.trim(),context);
 
                     },
                   ),

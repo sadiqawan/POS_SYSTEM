@@ -36,14 +36,13 @@ class DatabaseHelper {
 
   Future<void> _onCreateDb(Database db, int version) async {
     await db.execute('''
-      CREATE TABLE users (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        username TEXT,
-        email TEXT UNIQUE,
-        password TEXT,
-        
-      )
-    ''');
+    CREATE TABLE users (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      username TEXT,
+      email TEXT UNIQUE,
+      password TEXT
+    )
+  ''');
   }
 
   Future<int> registerUser(User user) async {
@@ -59,10 +58,23 @@ class DatabaseHelper {
       whereArgs: [email, password],
     );
 
-
     if (maps.isNotEmpty) {
       return User.fromMap(maps.first);
     }
     return null;
   }
+
+
+  Future<bool> isEmailExists(String email) async {
+    final db = await database;
+    final List<Map<String, dynamic>> maps = await db.query(
+      'users',
+      where: 'email = ?',
+      whereArgs: [email],
+    );
+
+    return maps.isNotEmpty;
+  }
+
+
 }

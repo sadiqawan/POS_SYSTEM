@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:pos/componants/custom_circular_button.dart';
 import 'package:pos/componants/custtom_text_feild.dart';
 import 'package:pos/const/exe.dart';
+import 'package:pos/controller/auth_controller/auth_controller.dart';
 import 'package:pos/view/app_views/auth_views/signup_view.dart';
 import '../../../const/text_style.dart';
 
@@ -15,7 +16,10 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
-  TextEditingController controller = TextEditingController();
+
+  final userEmailController = TextEditingController();
+  final passwordController = TextEditingController();
+  AuthController controller = Get.put(AuthController());
 
   @override
   Widget build(BuildContext context) {
@@ -40,13 +44,13 @@ class _LoginViewState extends State<LoginView> {
 
               CustomTextFeild(
                 hint: 'Email',
-                controller: controller,
+                controller: userEmailController,
                 icon: Icons.email_sharp,
               ),
               10.height,
               CustomTextFeild(
                 hint: 'Password',
-                controller: controller,
+                controller: passwordController,
                 icon: Icons.lock,
               ),
               20.height,
@@ -69,6 +73,10 @@ class _LoginViewState extends State<LoginView> {
                   CustomCircularButton(
                     icon: Icons.arrow_forward,
                     onTap: () {
+                      controller.login(userEmailController.text.trim(), passwordController.text.toString());
+
+                      print('hi');
+
                     },
                   ),
                 ],

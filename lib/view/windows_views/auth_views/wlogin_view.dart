@@ -5,6 +5,7 @@ import 'package:pos/componants/custom_circular_button.dart';
 import 'package:pos/const/cont_colors.dart';
 import 'package:pos/const/exe.dart';
 import 'package:pos/const/text_style.dart';
+import 'package:pos/controller/auth_controller/auth_controller.dart';
 import 'package:pos/view/windows_views/auth_views/wsignup_view.dart';
 
 class WloginView extends StatelessWidget {
@@ -12,8 +13,10 @@ class WloginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final emailC = TextEditingController();
-    final passwordC = TextEditingController();
+    final userEmailController = TextEditingController();
+    final passwordController = TextEditingController();
+    AuthController controller = Get.put(AuthController());
+
     return Scaffold(
       backgroundColor: kOrange,
       body: Center(
@@ -36,20 +39,23 @@ class WloginView extends StatelessWidget {
               ),
               20.height,
               _textFeild(
-                controller: emailC,
+                controller: userEmailController,
                 hint: 'Email',
                 preIcon: Icons.email_outlined,
               ),
               10.height,
               _textFeild(
-                controller: passwordC,
+                controller: passwordController,
                 hint: 'Password',
                 preIcon: Icons.lock,
               ),
               10.height,
               CustomCircularButton(
                   icon: Icons.arrow_forward_ios,
-                  onTap: () {},
+                  onTap: () {
+                    controller.login(userEmailController.text.trim(),
+                        passwordController.text.toString());
+                  },
                   height: 50.h,
                   width: 40.w),
               Text(
@@ -63,7 +69,7 @@ class WloginView extends StatelessWidget {
               ),
               InkWell(
                 onTap: () {
-                  Get.to(()=> WSignupView());
+                  Get.to(() => const WSignupView());
                 },
                 child: Text(
                   'SIGN UP!',

@@ -5,14 +5,17 @@ import 'package:pos/componants/custom_circular_button.dart';
 import 'package:pos/const/cont_colors.dart';
 import 'package:pos/const/exe.dart';
 import 'package:pos/const/text_style.dart';
+import 'package:pos/controller/auth_controller/auth_controller.dart';
 
 class WSignupView extends StatelessWidget {
   const WSignupView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final emailC = TextEditingController();
-    final passwordC = TextEditingController();
+    final usernameController = TextEditingController();
+    final userEmailController = TextEditingController();
+    final passwordController = TextEditingController();
+    AuthController controller =Get.put(AuthController());
 
     return Scaffold(
       backgroundColor: kOrange,
@@ -36,26 +39,30 @@ class WSignupView extends StatelessWidget {
               ),
               20.height,
               _textFeild(
-                controller: emailC,
+                controller: usernameController,
                 hint: 'Name',
                 preIcon: Icons.email_outlined,
               ),
               10.height,
               _textFeild(
-                controller: emailC,
+                controller: userEmailController,
                 hint: 'Email',
                 preIcon: Icons.email_outlined,
               ),
               10.height,
               _textFeild(
-                controller: passwordC,
+                controller: passwordController,
                 hint: 'Password',
                 preIcon: Icons.lock,
               ),
               10.height,
               CustomCircularButton(
                   icon: Icons.arrow_forward_ios,
-                  onTap: () {},
+                  onTap: () {
+                    controller.register(usernameController.text.trim(),userEmailController.text.trim() , passwordController.text.trim(),context);
+
+
+                  },
                   height: 50.h,
                   width: 40.w),
               Text(
