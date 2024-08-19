@@ -12,6 +12,7 @@ class CustomTextFeild extends StatelessWidget {
   final TextInputType? keyBordType;
   final bool? obscureText;
   final ValueChanged<String>? onSubmit;
+  final double? height ;
 
   const CustomTextFeild({
     required this.hint,
@@ -19,21 +20,21 @@ class CustomTextFeild extends StatelessWidget {
     required this.icon,
     super.key,
     this.keyBordType,
-    this.obscureText, this.onSubmit,
+    this.obscureText, this.onSubmit, this.height,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: Get.width,
-      height: 53.h,
+      height: 55.h ?? height,
       alignment: Alignment.center,
       padding: EdgeInsets.all(10.sp),
       decoration: BoxDecoration(
         color: kWhite,
         borderRadius: BorderRadius.circular(25),
-        boxShadow: [
-         const BoxShadow(
+        boxShadow: const[
+        BoxShadow(
             color: Colors.black12, // Adjust shadow color as needed
             offset: Offset(0, 4), // Moves shadow 4 pixels downwards
             blurRadius: 6, // Defines the blur radius

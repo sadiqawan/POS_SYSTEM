@@ -6,8 +6,8 @@ import 'package:pos/const/exe.dart';
 import 'package:pos/const/text_style.dart';
 import 'package:pos/view/app_views/auth_views/login_view.dart';
 
-class SplashView extends StatelessWidget {
-  const SplashView({super.key});
+class WelcomeView extends StatelessWidget {
+  const WelcomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +41,7 @@ class SplashView extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 100.h),
                 child: Image.asset(
-                  'assets/images/logo.png',
+                  'assets/images/icon_logo1.png',
                   height: 300.h,
                   width: width,
                   fit: BoxFit.cover,
@@ -65,7 +65,7 @@ class SplashView extends StatelessWidget {
             child: Column(
               children: [
                 CustomCircularButton(onTap: () {
-                  Get.to(()=> LoginView());
+                  Get.to(()=> const LoginView());
                 }, icon: Icons.arrow_upward),
                 Text('SWIPE UP', style: kTitle2),
               ],

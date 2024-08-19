@@ -33,3 +33,7 @@ final kBodyStyle2 = GoogleFonts.poppins(
 );
 final kBodyStyle2B =
     GoogleFonts.poppins(fontSize: 16.sp, fontWeight: FontWeight.bold);
+
+
+final kSmallStyle1 =
+    GoogleFonts.poppins(fontSize: 12.sp, );

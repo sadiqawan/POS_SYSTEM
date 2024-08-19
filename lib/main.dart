@@ -3,7 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:pos/view/app_views/splash_view.dart';
+import 'package:pos/view/app_views/welcome_view.dart';
+import 'package:pos/view/splash_view/splash_view.dart';
+import 'package:pos/view/windows_views/auth_views/wlogin_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       builder: (context, child) {
         return GetMaterialApp(
-          title: 'Flutter Demo',
+          title: 'POS',
           theme: ThemeData(
             textTheme: GoogleFonts.poppinsTextTheme().apply(
               bodyColor: Colors.black54, // Text color
@@ -32,7 +34,10 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.black54),
             useMaterial3: true,
           ),
-          home: const SplashView(),
+          home:
+          // WloginView()
+          SplashView()
+
         );
       },
     );

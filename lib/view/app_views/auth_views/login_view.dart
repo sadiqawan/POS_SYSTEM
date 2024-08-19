@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:pos/componants/custom_circular_button.dart';
 import 'package:pos/componants/custtom_text_feild.dart';
 import 'package:pos/const/exe.dart';
+import 'package:pos/view/app_views/auth_views/signup_view.dart';
 import '../../../const/text_style.dart';
 
 class LoginView extends StatefulWidget {
@@ -34,7 +36,8 @@ class _LoginViewState extends State<LoginView> {
                 style: kTitle2.copyWith(),
               ),
 
-              Image.asset('assets/images/logo2.png',height: 300.h,),
+              Image.asset('assets/images/icon_logo2.png',height: 270.h,),
+
               CustomTextFeild(
                 hint: 'Email',
                 controller: controller,
@@ -65,7 +68,8 @@ class _LoginViewState extends State<LoginView> {
                   SizedBox(width: 10.w),
                   CustomCircularButton(
                     icon: Icons.arrow_forward,
-                    onTap: () {},
+                    onTap: () {
+                    },
                   ),
                 ],
               ),
@@ -77,9 +81,15 @@ class _LoginViewState extends State<LoginView> {
                     'DON\'T YOU HAVE AN ACCOUNT? ',
                     style: kBodyStyle2.copyWith(),
                   ),
-                  Text(
-                    'SIGN UP!',
-                    style: kBodyStyle1B.copyWith(),
+                  InkWell(
+                    onTap: (){
+                      Get.to(()=> const SignupView());
+
+                    },
+                    child: Text(
+                      'SIGN UP!',
+                      style: kBodyStyle1B.copyWith(),
+                    ),
                   ),
                 ],
               ),
