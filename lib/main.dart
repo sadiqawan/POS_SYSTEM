@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pos/const/cont_colors.dart';
 import 'package:pos/view/splash_view/splash_view.dart';
 
 
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
         return GetMaterialApp(
           title: 'POS',
           theme: ThemeData(
+            appBarTheme: const AppBarTheme(color: kOrange),
             textTheme: GoogleFonts.poppinsTextTheme().apply(
               bodyColor: Colors.black54, // Text color
               displayColor: Colors.black38, // Headline color

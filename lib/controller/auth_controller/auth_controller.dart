@@ -2,9 +2,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pos/const/cont_colors.dart';
-import 'package:pos/view/app_views/home_view/home_view.dart';
+
 import '../../model/user_model.dart';
 import '../../services/db_service/db_helper.dart';
+import '../../view/app_views/registration_view/registration_view.dart';
 
 class AuthController extends GetxController {
   final DatabaseHelper _databaseHelper = DatabaseHelper.instance;
@@ -52,7 +53,7 @@ class AuthController extends GetxController {
           final username = user.username.isNotEmpty ? user.username : 'User';
           Get.snackbar('Success', 'Login successful! Welcome, $username!',
               backgroundColor: Colors.green.withOpacity(.3));
-          Get.offAll(const HomeView());
+          Get.offAll(const RegistrationView());
         } else {
           Get.snackbar('Failed', 'Invalid email or password!',
               backgroundColor: kRed.withOpacity(.3));
