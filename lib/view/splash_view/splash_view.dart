@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:get/get.dart';
 import 'package:pos/const/cont_colors.dart';
-
 import 'package:pos/view/app_views/welcome_view.dart';
 import 'package:pos/view/windows_views/auth_views/wlogin_view.dart';
 

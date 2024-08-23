@@ -59,7 +59,7 @@ class WSignupView extends StatelessWidget {
               CustomCircularButton(
                   icon: Icons.arrow_forward_ios,
                   onTap: () {
-                    controller.register(usernameController.text.trim(),userEmailController.text.trim() , passwordController.text.trim(),context);
+                    // controller.register(usernameController.text.trim(),userEmailController.text.trim() , passwordController.text.trim(),context);
 
 
                   },

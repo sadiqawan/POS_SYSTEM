@@ -20,11 +20,12 @@ class _SignupViewState extends State<SignupView> {
   final passwordController = TextEditingController();
 
   AuthController controller = Get.put(AuthController());
+
   @override
   void dispose() {
-  userEmailController.dispose();
-  usernameController.dispose();
-  passwordController.dispose();
+    userEmailController.dispose();
+    usernameController.dispose();
+    passwordController.dispose();
     super.dispose();
   }
 
@@ -32,7 +33,8 @@ class _SignupViewState extends State<SignupView> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: SingleChildScrollView( // Added SingleChildScrollView here
+        body: SingleChildScrollView(
+          // Added SingleChildScrollView here
           padding: EdgeInsets.symmetric(horizontal: 20.w),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -42,8 +44,10 @@ class _SignupViewState extends State<SignupView> {
                 'Welcome To POS!',
                 style: kHeading1B,
               ),
-
-              Image.asset('assets/images/icon_logo2.png',height: 270.h,),
+              Image.asset(
+                'assets/images/icon_logo2.png',
+                height: 270.h,
+              ),
               CustomTextFeild(
                 hint: 'Name',
                 controller: usernameController,
@@ -61,7 +65,6 @@ class _SignupViewState extends State<SignupView> {
                 controller: passwordController,
                 icon: Icons.lock,
               ),
-
               30.height,
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -74,13 +77,15 @@ class _SignupViewState extends State<SignupView> {
                   CustomCircularButton(
                     icon: Icons.arrow_forward,
                     onTap: () {
-                      controller.register(usernameController.text.trim(),userEmailController.text.trim() , passwordController.text.trim(),context);
-
+                     /* controller.register(
+                          usernameController.text.trim(),
+                          userEmailController.text.trim(),
+                          passwordController.text.trim(),
+                          context);*/
                     },
                   ),
                 ],
               ),
-
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -89,7 +94,7 @@ class _SignupViewState extends State<SignupView> {
                     style: kBodyStyle2.copyWith(),
                   ),
                   InkWell(
-                    onTap: (){
+                    onTap: () {
                       Get.back();
                     },
                     child: Text(
@@ -99,7 +104,6 @@ class _SignupViewState extends State<SignupView> {
                   ),
                 ],
               ),
-
             ],
           ),
         ),

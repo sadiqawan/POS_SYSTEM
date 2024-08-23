@@ -5,7 +5,7 @@ import 'package:pos/componants/custom_circular_button.dart';
 import 'package:pos/componants/custtom_text_feild.dart';
 import 'package:pos/const/exe.dart';
 import 'package:pos/controller/auth_controller/auth_controller.dart';
-import 'package:pos/view/app_views/auth_views/signup_view.dart';
+import 'package:pos/view/app_views/registration_view/registration_view.dart';
 import '../../../const/text_style.dart';
 
 class LoginView extends StatefulWidget {
@@ -16,16 +16,23 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
-
   final userEmailController = TextEditingController();
   final passwordController = TextEditingController();
   AuthController controller = Get.put(AuthController());
+  @override
+  void dispose() {
+    userEmailController.dispose();
+    passwordController.dispose();
+    // TODO: implement dispose
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: SingleChildScrollView( // Added SingleChildScrollView here
+        body: SingleChildScrollView(
+          // Added SingleChildScrollView here
           padding: EdgeInsets.symmetric(horizontal: 20.w),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,9 +46,10 @@ class _LoginViewState extends State<LoginView> {
                 'Start working now',
                 style: kTitle2.copyWith(),
               ),
-
-              Image.asset('assets/images/icon_logo2.png',height: 270.h,),
-
+              Image.asset(
+                'assets/images/icon_logo2.png',
+                height: 270.h,
+              ),
               CustomTextFeild(
                 hint: 'Email',
                 controller: userEmailController,
@@ -73,15 +81,16 @@ class _LoginViewState extends State<LoginView> {
                   CustomCircularButton(
                     icon: Icons.arrow_forward,
                     onTap: () {
-                      controller.login(userEmailController.text.trim(), passwordController.text.toString());
+                      controller.login(
+                        userEmailController.text.trim(),
+                        passwordController.text.trim(),
+                      );
 
                       print('hi');
-
                     },
                   ),
                 ],
               ),
-
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -90,9 +99,9 @@ class _LoginViewState extends State<LoginView> {
                     style: kBodyStyle2.copyWith(),
                   ),
                   InkWell(
-                    onTap: (){
-                      Get.to(()=> const SignupView());
-
+                    onTap: () {
+                      Get.to(() => const RegistrationView());
+                      // Get.to(()=> const SignupView());
                     },
                     child: Text(
                       'SIGN UP!',
@@ -101,7 +110,6 @@ class _LoginViewState extends State<LoginView> {
                   ),
                 ],
               ),
-
             ],
           ),
         ),

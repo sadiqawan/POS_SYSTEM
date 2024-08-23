@@ -39,7 +39,8 @@ dependencies:
   get: ^4.6.6
   flutter_screenutil: ^5.9.3
   sqflite: ^2.3.3+1
-  path_provider: ^2.1.4
+  path_provider:
+  image_picker:
 
 
 dev_dependencies:

@@ -34,16 +34,39 @@ class DatabaseHelper {
     return userDatabase;
   }
 
+  // new user table
   Future<void> _onCreateDb(Database db, int version) async {
     await db.execute('''
     CREATE TABLE users (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       username TEXT,
       email TEXT UNIQUE,
-      password TEXT
+      password TEXT,
+      businessName TEXT,
+      phone TEXT,
+      address TEXT,
+      businessType TEXT,
+      image BLOB
     )
   ''');
   }
+
+  /*Future<void> _onCreateDb(Database db, int version) async {
+    await db.execute('''
+    CREATE TABLE users (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      username TEXT,
+      email TEXT UNIQUE,
+      password TEXT,
+      businessName TEXT,
+      phone TEXT,
+      address TEXT,
+      businessType TEXT,
+      charges TEXT
+    )
+  ''');
+  }*/
+
 
   Future<int> registerUser(User user) async {
     final db = await database;
